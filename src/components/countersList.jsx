@@ -22,16 +22,16 @@ const CountersList = () => {
 
     const handleIncrement = (id) => {
         const index = counters.findIndex(c => c.id === id);
-        counters[index].value += 1;
-        setCounters([...counters]);
-        //вот тут вот почему не работает без деструктуризации?
-        // мы же вроде правим массив и потом запускаем setCounters
+        const newCounters = [...counters];
+        newCounters[index].value++;
+        setCounters(newCounters);
     };
 
     const handleDecrement = (id) => {
         const index = counters.findIndex(c => c.id === id);
-        counters[index].value -= 1;
-        setCounters([...counters]);
+        const newCounters = [...counters];
+        newCounters[index].value--;
+        setCounters(newCounters);
     };
 
     return (
